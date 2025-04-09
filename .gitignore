@@ -1,3 +1,12 @@
 node_modules
 dist
 .vscode-test
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Build output
+*.vsix
