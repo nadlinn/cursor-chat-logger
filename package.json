@@ -3,26 +3,69 @@
   "displayName": "Cursor Chat Logger",
   "description": "Logs Cursor AI chat messages locally.",
   "version": "0.0.1",
+  "publisher": "nadlinn",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nadlinn/cursor-chat-logger.git"
+  },
   "engines": {
     "vscode": "^1.80.0"
   },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "cursor",
+    "chat",
+    "logger",
+    "ai",
+    "conversation"
+  ],
   "activationEvents": ["*"],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "chatLogger.startLogging",
-        "title": "Start Chat Logging"
+        "title": "Chat Logger: Start Logging"
+      },
+      {
+        "command": "chatLogger.viewConversations",
+        "title": "Chat Logger: View Conversations"
+      },
+      {
+        "command": "chatLogger.resumeConversation",
+        "title": "Chat Logger: Resume Conversation"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Cursor Chat Logger",
+      "properties": {
+        "cursorChatLogger.autoResume": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically resume the last conversation when starting the logger"
+        }
+      }
+    }
   },
   "scripts": {
-    "vscode:prepublish": "tsc -p ./",
-    "compile": "tsc -watch -p ./"
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "node ./dist/test/runTest.js",
+    "package": "vsce package",
+    "publish": "vsce publish"
   },
   "devDependencies": {
     "@types/vscode": "^1.80.0",
+    "@types/node": "^16.0.0",
+    "@types/mocha": "^10.0.0",
     "typescript": "^5.0.0",
-    "vscode": "^1.1.37"
-  }
+    "mocha": "^10.0.0",
+    "vscode-test": "^1.6.1",
+    "vsce": "^2.15.0"
+  },
+  "license": "MIT"
 }
