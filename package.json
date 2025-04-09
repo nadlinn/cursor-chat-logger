@@ -1,0 +1,28 @@
+{
+  "name": "cursor-chat-logger",
+  "displayName": "Cursor Chat Logger",
+  "description": "Logs Cursor AI chat messages locally.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "activationEvents": ["*"],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "chatLogger.startLogging",
+        "title": "Start Chat Logging"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.0.0",
+    "vscode": "^1.1.37"
+  }
+}
